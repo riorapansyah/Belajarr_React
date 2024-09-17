@@ -1,13 +1,11 @@
 const Button = (props) => {
-    const { childern, classname = "bg-black"} = props;
+    const {children, classname = "bg-black"} = props
     return (
-      <button
-      className={`h-10 px-6 font-semibold rounded-md ${variant} text-black`}
-      type="submit"
-      >
-        {childern}
-      </button>
+        <button 
+        className={`h-10 px-6 font-semibold rounded-md ${variant}-700 text-white`}
+        type="submit"         
+        >
+        {children}
+        </button>
     );
-  };
-
-  export default Button
+}

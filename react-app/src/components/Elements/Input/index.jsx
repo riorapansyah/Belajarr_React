@@ -1,14 +1,14 @@
-import input from "./Input";
+import Input from "./Input";
 import Label from "./Label";
 
 const InputForm = (props) => {
-    const {label, name, type, placeholder} = props;
+    const { Label, name, type, placeholder } = props;
     return (
         <div className="mb-6">
-            <label htmlFor={name}>{title}</label>
-            <input name={name} type={type} placeholder={placeholder}/>
+            <Label htmlFor={name}>{title}</Label>  
+            <Input name={name} type={type} placeholder={placeholder} />  
         </div>
     );
 };
 
-export default InputForm
+export default InputForm;
