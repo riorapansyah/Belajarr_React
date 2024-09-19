@@ -1,9 +1,9 @@
-import { Children } from "react";
+import { children } from "react";
 import { Link } from "react-router-dom";
 
 
 const AuthLayouts = (props) => {
-    const {Children, title, type} = props;
+    const {children, title, type} = props;
     return (   
         <div className="flex justify-center min-h-screen items-center">
         <div className="w-full max-w-xs">
@@ -11,7 +11,7 @@ const AuthLayouts = (props) => {
             <p className="font-medium text-slate-600 mb-8">
                 Welcome, Please enter your details
             </p>
-          {Children}
+          {children}
           <Navigation type={type} />
         </div>
         </div>
@@ -38,4 +38,4 @@ const Navigation = ({ type }) => {
     }
 };
 
-export default AuthLayouts
+export default AuthLayouts;

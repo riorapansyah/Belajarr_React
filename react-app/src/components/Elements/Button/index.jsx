@@ -1,17 +1,21 @@
-const Button = (props) => {
+import React from 'react'
+
+export default function index(props) {
     const {
-        children, 
+        children,
         classname = "bg-black",
-         onClick = () => {}, 
-         type = "button",
-        } = props;
-    return (
-        <button 
-        className={`h-10 px-6 font-semibold rounded-md ${variant}-700 text-white`}
-        type={type} 
-        onClick={() => onClick()}        
+        onClick = () => {},
+        type = "button",
+      } = props;
+
+      return (
+        <button
+          className={`h-10 px-6 font-semibold rounded-md ${classname}-700 text-white`}
+          type={type}
+          onClick={onClick}
         >
-        {children}
+          {children}
         </button>
-    );
+      );
 }
+
