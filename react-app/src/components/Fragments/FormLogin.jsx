@@ -11,18 +11,17 @@ const FormLogin = () => {
   return (
     <form onSubmit={handleLogin}>
       <InputForm
-        label="email"
+        title="email"
         type="email"
         placeholder="example@gmail.com"
         name="email"
       />
       <InputForm
-        label="Password"
+        title="Password"
         type="Password"
         placeholder="******"
         name="Password"
       />
-
       <Button classname="bg-blue-600 w-full" type="submit">
         Login
       </Button>
