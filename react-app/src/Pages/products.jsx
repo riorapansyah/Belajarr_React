@@ -1,6 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Button from "../components/Elements/Button";
 import CardProduct from "../components/Fragments/CardProduct";
+import Counter from "../components/Fragments/Counter";
 
 const product = [
   {
@@ -31,12 +32,21 @@ const product = [
 const email = localStorage.getItem("email");
 
 const ProductsPage = () => {
-  const [cart, setCart] = useState([
-    {
-      id: "1",
-      qty: 1,
-    },
-  ]);
+  const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    setCart([{ id: 1, qty: 1 }]);
+  }, []);
+
+  useEffect(() => {
+    // Ubah 'products' menjadi 'product'
+    const sum = cart.reduce((acc, item) => {
+      const selectedProduct = product.find((prod) => prod.id === item.id);
+      return acc + selectedProduct.price * item.qty;
+    }, 0);
+    setTotalPrice(sum);
+  }, [cart]);
 
   const handleLogout = () => {
     localStorage.removeItem("email");
@@ -61,7 +71,7 @@ const ProductsPage = () => {
       <div className="flex justify-end h-20 bg-blue-600 text-white items-center px-10">
         {email}
         <Button className="ml-5 bg-black" onClick={handleLogout}>
-          Logout 
+          Logout
         </Button>
       </div>
       <div className="flex justify-between py-5">
@@ -120,10 +130,28 @@ const ProductsPage = () => {
                   </tr>
                 );
               })}
+              <tr>
+                <td colSpan={3}>
+                  {" "}
+                  <b>Total Price</b>
+                </td>
+                <td>
+                  <b>
+                    Rp{" "}
+                    {totalPrice.toLocaleString("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    })}
+                  </b>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
+      {/* <div className="mt-5 justify-center">
+        <Counter ></Counter>
+      </div> */}
     </Fragment>
   );
 };
